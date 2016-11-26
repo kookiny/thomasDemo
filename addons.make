@@ -1,5 +1,7 @@
 ofxCv
 ofxFaceTracker
 ofxGui
+ofxMSAInteractiveObject
 ofxOpenCv
+ofxSoftKeyboard2
 ofxTiming

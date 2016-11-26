@@ -68,7 +68,7 @@ class ofxFaceTrackerMulti {
 #ifdef USE_THREADED
                 trackers_active.push_back(new ofxFaceTrackerThreaded());
 #else
-                trackers.push_back(new ofxFaceTracker());
+                trackers_active.push_back(new ofxFaceTracker());
 #endif
                 trackers_active.back()->setup();
                 name_active.push_back("ID_"+ofToString(i));
@@ -189,7 +189,7 @@ class ofxFaceTrackerMulti {
         
         void exit() {
             
-
+#ifdef USE_THREADED
             for(int i=0; i<trackers_inactive.size();i++){
                 trackers_inactive[i]->waitForThread();
             }
@@ -197,6 +197,7 @@ class ofxFaceTrackerMulti {
             for(int i=0; i<trackers_active.size();i++){
                 trackers_active[i]->waitForThread();
             }
+#endif
         }
         
         void draw(){
